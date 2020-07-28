@@ -1,0 +1,9 @@
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1\OnboardSIGDB1.Dominio\bin\Debug\netstandard2.0\OnboardSIGDB1.Dominio.deps.json
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1\OnboardSIGDB1.Dominio\bin\Debug\netstandard2.0\OnboardSIGDB1.Dominio.dll
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1\OnboardSIGDB1.Dominio\obj\Debug\netstandard2.0\OnboardSIGDB1.Dominio.AssemblyInfoInputs.cache
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1\OnboardSIGDB1.Dominio\obj\Debug\netstandard2.0\OnboardSIGDB1.Dominio.AssemblyInfo.cs
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1\OnboardSIGDB1.Dominio\bin\Debug\netstandard2.0\OnboardSIGDB1.Dominio.pdb
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1\OnboardSIGDB1.Dominio\obj\Debug\netstandard2.0\OnboardSIGDB1.Dominio.csproj.CoreCompileInputs.cache
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1\OnboardSIGDB1.Dominio\obj\Debug\netstandard2.0\OnboardSIGDB1.Dominio.dll
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1\OnboardSIGDB1.Dominio\obj\Debug\netstandard2.0\OnboardSIGDB1.Dominio.pdb
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1\OnboardSIGDB1.Dominio\obj\Debug\netstandard2.0\OnboardSIGDB1.Dominio.csprojAssemblyReference.cache
