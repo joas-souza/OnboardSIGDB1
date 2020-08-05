@@ -7,9 +7,28 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200726025429_criacao.cs" />
     <Compile Remove="Migrations\20200726025429_criacao.Designer.cs" />
+    <Compile Remove="Migrations\20200804190026_Alterandobanco2.cs" />
+    <Compile Remove="Migrations\20200804190026_Alterandobanco2.Designer.cs" />
+    <Compile Remove="Migrations\20200805122959_MudandoRelacionamentoFuncionarioCargo.cs" />
+    <Compile Remove="Migrations\20200805122959_MudandoRelacionamentoFuncionarioCargo.Designer.cs" />
+    <Compile Remove="Migrations\20200805124723_MudandoRelacionamentoFuncionarioCargo.cs" />
+    <Compile Remove="Migrations\20200805124723_MudandoRelacionamentoFuncionarioCargo.Designer.cs" />
+    <Compile Remove="Migrations\20200805134355_MudandoRelacionamentoFuncionarioCargo.cs" />
+    <Compile Remove="Migrations\20200805134355_MudandoRelacionamentoFuncionarioCargo.Designer.cs" />
+    <Compile Remove="Migrations\20200805135317_MudandoRelacionamentoFuncionarioCargo.cs" />
+    <Compile Remove="Migrations\20200805135317_MudandoRelacionamentoFuncionarioCargo.Designer.cs" />
+    <Compile Remove="Migrations\20200805141312_MudandoRelacionamentoFuncionarioCargo3.cs" />
+    <Compile Remove="Migrations\20200805141312_MudandoRelacionamentoFuncionarioCargo3.Designer.cs" />
+    <Compile Remove="Migrations\20200805190047_RemovendoObrigatoriedadeEmpresaDentroFuncionario2.cs" />
+    <Compile Remove="Migrations\20200805190047_RemovendoObrigatoriedadeEmpresaDentroFuncionario2.Designer.cs" />
+    <Compile Remove="Migrations\20200805190129_RemovendoObrigatoriedadeEmpresaDentroFuncionario2.cs" />
+    <Compile Remove="Migrations\20200805190129_RemovendoObrigatoriedadeEmpresaDentroFuncionario2.Designer.cs" />
+    <Compile Remove="Migrations\20200805194147_CriandoIdCargoFuncionario2.cs" />
+    <Compile Remove="Migrations\20200805194147_CriandoIdCargoFuncionario2.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.6" />
@@ -17,6 +36,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OnboardSIGDB1.Dominio.Dtos.Empresa;
 using OnboardSIGDB1.Dominio.Interfaces;
+using OnboardSIGDB1.Dominio.Servicos.Notificacoes;
 
 namespace OnboardSIGDB1.Controllers
 {
@@ -10,12 +11,19 @@ namespace OnboardSIGDB1.Controllers
     [Route("[controller]")]
     public class EmpresaController : ControllerBase
     {
-        private readonly IServicoDeEmpresa _servicoDeEmpresa;
+        private readonly IArmazenadorDeEmpresa _armazenadorDeEmpresa;
+        private readonly IAlteradorDeEmpresa _alteradorDeEmpresa;
+        private readonly IRemovedorDeEmpresa _removedorDeEmpresa;
         private readonly IConsultasDeEmpresa _consultasDeEmpresa;
 
-        public EmpresaController(IServicoDeEmpresa servicoDeEmpresa, IConsultasDeEmpresa consultasDeEmpresa)
-        { 
-            _servicoDeEmpresa = servicoDeEmpresa;
+        public EmpresaController(IArmazenadorDeEmpresa armazenadorDeEmpresa,
+                                 IAlteradorDeEmpresa alteradorDeEmpresa,
+                                 IRemovedorDeEmpresa removedorDeEmpresa,
+                                 IConsultasDeEmpresa consultasDeEmpresa)
+        {
+            _armazenadorDeEmpresa = armazenadorDeEmpresa;
+            _alteradorDeEmpresa = alteradorDeEmpresa;
+            _removedorDeEmpresa = removedorDeEmpresa;
             _consultasDeEmpresa = consultasDeEmpresa;
         }
 
@@ -29,7 +37,7 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                var empresas = _consultasDeEmpresa.RecuperarTodos();
+                var empresas = await _consultasDeEmpresa.RecuperarTodos();
 
                 return Ok(empresas);
             }
@@ -49,7 +57,7 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                var empresa = _servicoDeEmpresa.RecuperarPorId(id);
+                var empresa = await _consultasDeEmpresa.RecuperarPorId(id);
 
                 return Ok(empresa);
             }
@@ -71,7 +79,7 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                var empresas = _consultasDeEmpresa.RecuperarPorFiltro(filtro);
+                var empresas = await _consultasDeEmpresa.RecuperarPorFiltro(filtro);
 
                 return Ok(empresas);
             }
@@ -93,9 +101,9 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                var empresa = _servicoDeEmpresa.Salvar(dto);
+                await _armazenadorDeEmpresa.Salvar(dto);
 
-                return Ok(empresa?.Id);
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -114,9 +122,9 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                var empresa = _servicoDeEmpresa.Alterar(id, dto);
+                await _alteradorDeEmpresa.Alterar(id, dto);
 
-                return Ok(empresa);
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -135,7 +143,7 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                _servicoDeEmpresa.Excluir(id);
+                await _removedorDeEmpresa.Excluir(id);
 
                 return NoContent();
             }

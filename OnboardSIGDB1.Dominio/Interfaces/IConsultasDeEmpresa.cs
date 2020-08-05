@@ -1,12 +1,16 @@
 ﻿using OnboardSIGDB1.Dominio.Dtos.Empresa;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace OnboardSIGDB1.Dominio.Interfaces
 {
     public interface IConsultasDeEmpresa
     {
-        IEnumerable<EmpresaDto> RecuperarTodos();
+        Task<IEnumerable<EmpresaDto>> RecuperarTodos();
 
-        IEnumerable<EmpresaDto> RecuperarPorFiltro(Filtro filtro);
+        Task<IEnumerable<EmpresaDto>> RecuperarPorFiltro(Filtro filtro);
+
+        Task<EmpresaDto> RecuperarPorId(int id);
+
     }
 }

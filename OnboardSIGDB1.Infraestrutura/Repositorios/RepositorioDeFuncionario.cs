@@ -1,12 +1,7 @@
-﻿
-using OnboardSIGDB1.Dominio.Dtos.Funcionario;
-using OnboardSIGDB1.Dominio.Entidades;
+﻿using OnboardSIGDB1.Dominio.Entidades;
 using OnboardSIGDB1.Dominio.Interfaces;
 using OnboardSIGDB1.Infraestrutura.Contexto;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
+using System.Threading.Tasks;
 
 namespace OnboardSIGDB1.Infraestrutura.Repositorios
 {
@@ -19,27 +14,24 @@ namespace OnboardSIGDB1.Infraestrutura.Repositorios
             _contexto = onboardDbContext;
         }
 
-        public void Salvar(Funcionario funcionario)
+        public async Task Salvar(Funcionario funcionario)
         {
-            _contexto.Funcionarios.Add(funcionario);
-            _contexto.SaveChanges();
+            await _contexto.Funcionarios.AddAsync(funcionario);
         }
 
-        public void Alterar(Funcionario funcionario)
+        public async Task Alterar(Funcionario funcionario)
         {
             _contexto.Entry(funcionario).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            _contexto.SaveChanges();
         }
 
-        public void Excluir(int id)
+        public async Task Excluir(int id)
         {
-            _contexto.Funcionarios.Remove(RecuperarPorId(id));
-            _contexto.SaveChanges();
+            _contexto.Funcionarios.Remove(await RecuperarPorId(id));
         }
 
-        public Funcionario RecuperarPorId(int id)
+        public async Task<Funcionario> RecuperarPorId(int id)
         {
-            return _contexto.Funcionarios.Find(id);
+            return await _contexto.Funcionarios.FindAsync(id);
         }
     }
 }

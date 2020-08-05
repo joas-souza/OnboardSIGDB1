@@ -14,8 +14,8 @@ namespace OnboardSIGDB1.Dominio.Dtos.Funcionario
 
         public DateTime DataContratacao { get; set; }
 
-        public int? EmpresaId { get; set; }
+        public int?  EmpresaId { get; set; }
 
-        public int? CargoId { get; set; }
+        public int CargoId { get; set; }
     }
 }

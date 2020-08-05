@@ -36,6 +36,21 @@ namespace OnboardSIGDB1.Infraestrutura.Migrations
                     b.ToTable("Cargos");
                 });
 
+            modelBuilder.Entity("OnboardSIGDB1.Dominio.Entidades.CargoFuncionario", b =>
+                {
+                    b.Property<int>("CargoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CargoId", "FuncionarioId");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.ToTable("CargosFuncionario");
+                });
+
             modelBuilder.Entity("OnboardSIGDB1.Dominio.Entidades.Empresa", b =>
                 {
                     b.Property<int>("Id")
@@ -68,9 +83,6 @@ namespace OnboardSIGDB1.Infraestrutura.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CargoId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Cpf")
                         .IsRequired()
                         .HasColumnType("nvarchar(11)")
@@ -89,22 +101,32 @@ namespace OnboardSIGDB1.Infraestrutura.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CargoId");
-
                     b.HasIndex("EmpresaId");
 
                     b.ToTable("Funcionarios");
                 });
 
-            modelBuilder.Entity("OnboardSIGDB1.Dominio.Entidades.Funcionario", b =>
+            modelBuilder.Entity("OnboardSIGDB1.Dominio.Entidades.CargoFuncionario", b =>
                 {
                     b.HasOne("OnboardSIGDB1.Dominio.Entidades.Cargo", "Cargo")
                         .WithMany()
-                        .HasForeignKey("CargoId");
+                        .HasForeignKey("CargoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
+                    b.HasOne("OnboardSIGDB1.Dominio.Entidades.Funcionario", "Funcionario")
+                        .WithMany("CargosFuncionario")
+                        .HasForeignKey("FuncionarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("OnboardSIGDB1.Dominio.Entidades.Funcionario", b =>
+                {
                     b.HasOne("OnboardSIGDB1.Dominio.Entidades.Empresa", "Empresa")
                         .WithMany()
-                        .HasForeignKey("EmpresaId");
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

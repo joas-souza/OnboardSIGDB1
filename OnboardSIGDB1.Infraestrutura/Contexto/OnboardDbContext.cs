@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnboardSIGDB1.Dominio.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using OnboardSIGDB1.Infraestrutura.Mappings;
 
 namespace OnboardSIGDB1.Infraestrutura.Contexto
 {
@@ -16,6 +14,16 @@ namespace OnboardSIGDB1.Infraestrutura.Contexto
         public DbSet<Empresa> Empresas { get; set; }
         public DbSet<Cargo> Cargos { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
+        public DbSet<CargoFuncionario> CargosFuncionario { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfiguration(new FuncionarioMapping());
+            modelBuilder.ApplyConfiguration(new EmpresaMapping());
+            modelBuilder.ApplyConfiguration(new CargoMapping());
+            modelBuilder.ApplyConfiguration(new CargosFuniconarioMapping());
+        }
     }
 }

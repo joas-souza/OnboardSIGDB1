@@ -10,12 +10,26 @@ namespace OnboardSIGDB1.Controllers
     [Route("[controller]")]
     public class FuncionarioController : ControllerBase
     {
-        private readonly IServicoDeFuncionario _servicoDeFuncionario;
+        private readonly IArmazenadorDeFuncionario _armazenadorDeFuncionario;
+
+        private readonly IAlteradorDeFuncionario _alteradorDeFuncionario;
+        private readonly IVinculadorDeEmpresaAoFuncionario _vinculadorDeEmpresaAoFuncionario;
+        private readonly IVinculadorDeCargoAoFuncionario _vinculadorDeCargoAoFuncionario;
+        private readonly IRemovedorDeFuncionario _removedorDeFuncionario;
         private readonly IConsultasDeFuncionario _consultasDeFuncionario;
 
-        public FuncionarioController(IServicoDeFuncionario servicoDeFuncionario, IConsultasDeFuncionario consultasDeFuncionario)
+        public FuncionarioController(IArmazenadorDeFuncionario armazenadorDeFuncionario,
+                                    IAlteradorDeFuncionario alteradorDeFuncionario,
+                                    IVinculadorDeEmpresaAoFuncionario vinculadorDeEmpresaAoFuncionario,
+                                    IVinculadorDeCargoAoFuncionario vinculadorDeCargoAoFuncionario,
+                                    IRemovedorDeFuncionario removedorDeFuncionario,
+                                    IConsultasDeFuncionario consultasDeFuncionario)
         {
-            _servicoDeFuncionario = servicoDeFuncionario;
+            _armazenadorDeFuncionario = armazenadorDeFuncionario;
+            _alteradorDeFuncionario = alteradorDeFuncionario;
+            _vinculadorDeEmpresaAoFuncionario = vinculadorDeEmpresaAoFuncionario;
+            _vinculadorDeCargoAoFuncionario = vinculadorDeCargoAoFuncionario;
+            _removedorDeFuncionario = removedorDeFuncionario;
             _consultasDeFuncionario = consultasDeFuncionario;
         }
 
@@ -29,7 +43,7 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                var funcionarios = _consultasDeFuncionario.RecuperarTodos();
+                var funcionarios = await _consultasDeFuncionario.RecuperarTodos();
 
                 return Ok(funcionarios);
             }
@@ -49,7 +63,7 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                var funcionario = _servicoDeFuncionario.RecuperarPorId(id);
+                var funcionario = await _consultasDeFuncionario.RecuperarPorId(id);
 
                 return Ok(funcionario);
             }
@@ -65,11 +79,11 @@ namespace OnboardSIGDB1.Controllers
         /// <returns>Funcionários por filtro</returns>
         /// <response code="200">Funcionários cadastrados por filtro.</response>
         [HttpGet("pesquisar")]
-        public async Task<IActionResult> Get([FromQuery]Filtro filtro)
+        public async Task<IActionResult> Get([FromQuery] Filtro filtro)
         {
             try
             {
-                var funcionarios = _consultasDeFuncionario.RecuperarPorFiltro(filtro);
+                var funcionarios = await _consultasDeFuncionario.RecuperarPorFiltro(filtro);
 
                 return Ok(funcionarios);
             }
@@ -91,9 +105,9 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                var funcionario = _servicoDeFuncionario.Salvar(dto);
+                await _armazenadorDeFuncionario.Salvar(dto);
 
-                return Ok(funcionario?.Id);
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -112,15 +126,40 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                var funcionario = _servicoDeFuncionario.Alterar(id, dto);
+                await _alteradorDeFuncionario.Alterar(id, dto);
 
-                if ( dto.EmpresaId > 0)
-                     funcionario = _servicoDeFuncionario.VincularEmpresa(dto);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
-                if (dto.CargoId > 0)
-                     funcionario = _servicoDeFuncionario.VincularCargo(dto);
+        [HttpPut("{id}/vincularempresa/{empresaId}")]
+        public async Task<IActionResult> VincularEmpresa(int id, int empresaId)
+        {
+            try
+            {
+                await _vinculadorDeEmpresaAoFuncionario.VincularEmpresa(id, empresaId);
 
-                return Ok(funcionario);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("{id}/atribuircargo/{cargoId}")]
+        public async Task<IActionResult> AtribuirCargo(int id, int cargoId)
+        {
+            try
+            {
+
+                await _vinculadorDeCargoAoFuncionario.VincularCargo(id, cargoId);
+
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -139,7 +178,7 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                _servicoDeFuncionario.Excluir(id);
+                await _removedorDeFuncionario.Excluir(id);
 
                 return NoContent();
             }

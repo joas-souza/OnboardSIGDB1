@@ -1,10 +1,7 @@
-﻿using OnboardSIGDB1.Dominio.Dtos.Cargo;
-using OnboardSIGDB1.Dominio.Entidades;
+﻿using OnboardSIGDB1.Dominio.Entidades;
 using OnboardSIGDB1.Dominio.Interfaces;
 using OnboardSIGDB1.Infraestrutura.Contexto;
-using System.Collections.Generic;
-using System.Linq;
-
+using System.Threading.Tasks;
 
 namespace OnboardSIGDB1.Infraestrutura.Repositorios
 {
@@ -17,27 +14,25 @@ namespace OnboardSIGDB1.Infraestrutura.Repositorios
             _contexto = onboardDbContext;
         }
 
-        public void Salvar(Cargo cargo)
+        public async Task Salvar(Cargo cargo)
         {
-            _contexto.Cargos.Add(cargo);
-            _contexto.SaveChanges();
+            await _contexto.Cargos.AddAsync(cargo);
         }
 
-        public void Alterar(Cargo cargo)
+        public async Task Alterar(Cargo cargo)
         {
             _contexto.Entry(cargo).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            _contexto.SaveChanges();
         }
 
-        public void Excluir(int id)
+        public async Task Excluir(int id)
         {
-            _contexto.Cargos.Remove(RecuperarPorId(id));
-            _contexto.SaveChanges();
+             _contexto.Cargos.Remove(await RecuperarPorId(id));
+
         }
 
-        public Cargo RecuperarPorId(int id)
+        public async Task<Cargo> RecuperarPorId(int id)
         {
-            return _contexto.Cargos.Find(id);
+            return await _contexto.Cargos.FindAsync(id);
         }
     }
 }

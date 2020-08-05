@@ -1,17 +1,18 @@
 ﻿using OnboardSIGDB1.Dominio.Dtos.Cargo;
 using OnboardSIGDB1.Dominio.Entidades;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace OnboardSIGDB1.Dominio.Interfaces
 {
     public interface IRepositorioDeCargo
     {
-        void Salvar(Cargo cargo);
+        Task Salvar(Cargo cargo);
 
-        void Alterar(Cargo cargo);
+        Task Alterar(Cargo cargo);
 
-        void Excluir(int id);
+        Task Excluir(int id);
 
-        Cargo RecuperarPorId(int id);
+        Task<Cargo> RecuperarPorId(int id);
     }
 }

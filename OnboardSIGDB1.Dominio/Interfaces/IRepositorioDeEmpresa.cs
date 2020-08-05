@@ -1,17 +1,16 @@
-﻿using OnboardSIGDB1.Dominio.Dtos.Empresa;
-using OnboardSIGDB1.Dominio.Entidades;
-using System.Collections.Generic;
+﻿using OnboardSIGDB1.Dominio.Entidades;
+using System.Threading.Tasks;
 
 namespace OnboardSIGDB1.Dominio.Interfaces
 {
     public interface IRepositorioDeEmpresa
     {
-        void Salvar(Empresa empresa);
+        Task Salvar(Empresa empresa);
 
-        void Alterar(Empresa empresa);
+        Task Alterar(Empresa empresa);
 
-        void Excluir(int id);
+        Task Excluir(int id);
 
-        Empresa RecuperarPorId(int id);
+        Task<Empresa> RecuperarPorId(int id);
     }
 }

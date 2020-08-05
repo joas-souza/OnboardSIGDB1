@@ -1,9 +1,12 @@
-﻿using OnboardSIGDB1.Dominio.Dtos.Funcionario;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using OnboardSIGDB1.Dominio.Dtos.Funcionario;
 using OnboardSIGDB1.Dominio.Interfaces;
 using OnboardSIGDB1.Infraestrutura.Contexto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace OnboardSIGDB1.Infraestrutura.Consultas
 {
@@ -16,18 +19,36 @@ namespace OnboardSIGDB1.Infraestrutura.Consultas
             _contexto = onboardDbContext;
         }
 
-        IEnumerable<FuncionarioDto> IConsultasDeFuncionario.RecuperarTodos()
+        public async Task<IEnumerable<FuncionarioDto>> RecuperarTodos()
         {
-            return _contexto.Funcionarios.ToList()
-                        .Select(f => new FuncionarioDto { Id = f.Id, Nome = f.Nome, Cpf = f.Cpf, DataContratacao = f.DataContratacao, CargoId = f.CargoId, EmpresaId = f.EmpresaId });
+            var funcionarios = await _contexto.Funcionarios
+                .Include(i => i.CargosFuncionario)
+                //    .ThenInclude(c => c.Cargo)
+                .ToListAsync();
+
+            return Mapper.Map<List<FuncionarioDto>>(funcionarios);
         }
 
-        public IEnumerable<FuncionarioDto> RecuperarPorFiltro(Filtro filtro)
+        public async Task<IEnumerable<FuncionarioDto>> RecuperarPorFiltro(Filtro filtro)
         {
-            return _contexto.Funcionarios.Where(e => (string.IsNullOrEmpty(filtro.Nome) || e.Nome == filtro.Nome) &&
-                                                     (string.IsNullOrEmpty(filtro.Cpf) || e.Cpf == filtro.Cpf) &&
-                                                     (filtro.DataContratacao == DateTime.MinValue || e.DataContratacao == filtro.DataContratacao)).ToList()
-                                                     .Select(f => new FuncionarioDto { Id = f.Id, Nome = f.Nome, Cpf = f.Cpf, DataContratacao = f.DataContratacao, CargoId = f.CargoId, EmpresaId = f.EmpresaId });
+            var funcionarios = await _contexto.Funcionarios
+                .Include(i => i.CargosFuncionario)
+                .Where(e => (string.IsNullOrEmpty(filtro.Nome) || e.Nome == filtro.Nome) &&
+                            (string.IsNullOrEmpty(filtro.Cpf) || e.Cpf == filtro.Cpf) &&
+                            (filtro.DataContratacao == DateTime.MinValue || e.DataContratacao == filtro.DataContratacao))
+                .ToListAsync();
+
+            return Mapper.Map<List<FuncionarioDto>>(funcionarios);
         }
+
+        public async Task<FuncionarioDto> RecuperarPorId(int id)
+        {
+            var funcionario = await _contexto.Funcionarios
+                .Include(i => i.CargosFuncionario)
+                .FirstOrDefaultAsync(f => f.Id == id);
+            return Mapper.Map<FuncionarioDto>(funcionario);
+        }
+
+       
     }
 }

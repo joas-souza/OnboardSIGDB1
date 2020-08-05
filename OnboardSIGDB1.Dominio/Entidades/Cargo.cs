@@ -1,22 +1,37 @@
-﻿using System;
+﻿using FluentValidation;
+using OnboardSIGDB1.Dominio.Constantes;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace OnboardSIGDB1.Dominio.Entidades
 {
-    public class Cargo
+    public class Cargo : Base<Cargo>
     {
+        protected Cargo() { }
+
         public Cargo(int id, string descricao)
         {
             Id = id;
             Descricao = descricao;
         }
 
-        public int Id { get; set; }
-       
-        [Required]
-        [StringLength(250)]
         public string Descricao { get; set; }
+
+        public virtual IList<CargoFuncionario> CargosFuncionario { get; private set; }
+
+        public void AlterarDescricao(string descricao)
+        {
+            Descricao = descricao;
+        }
+
+        public override bool Validar()
+        {
+            RuleFor(c => c.Descricao)
+                .NotEmpty().WithMessage("Descrição inválida")
+                .MaximumLength(Consts.QuantidadeMaximaDeCaracteresParaDescricao).WithMessage("A descrição deve ter no máximo 250 caracteres");
+
+            Result = Validate(this);
+
+            return Validate(this).IsValid;
+        }
     }
 }

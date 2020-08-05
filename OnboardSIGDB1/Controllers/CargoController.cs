@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using OnboardSIGDB1.Dominio.Dtos.Cargo;
 using OnboardSIGDB1.Dominio.Interfaces;
+using OnboardSIGDB1.Dominio.Servicos.Notificacoes;
 
 namespace OnboardSIGDB1.Controllers
 {
@@ -10,12 +12,17 @@ namespace OnboardSIGDB1.Controllers
     [Route("[controller]")]
     public class CargoController : ControllerBase
     {
-        private readonly IServicoDeCargo _servicoDeCargo;
+        private readonly IArmazenadorDeCargo _armazenadorDeCargo;
+        private readonly IAlteradorDeCargo _alteradorDeCargo;
+        private readonly IRemovedorDeCargo _removedorDeCargo;
         private readonly IConsultasDeCargo _consultasDeCargo;
+        private readonly NotificationContext _notificationContext;
 
-        public CargoController(IServicoDeCargo servicoDeCargo, IConsultasDeCargo consultasDeCargo)
+        public CargoController(IArmazenadorDeCargo armazenadorDeCargo, IAlteradorDeCargo alteradorDeCargo, IRemovedorDeCargo removedorDeCargo, IConsultasDeCargo consultasDeCargo, NotificationContext notificationContext)
         {
-            _servicoDeCargo = servicoDeCargo;
+            _armazenadorDeCargo = armazenadorDeCargo;
+            _alteradorDeCargo = alteradorDeCargo;
+            _removedorDeCargo = removedorDeCargo;
             _consultasDeCargo = consultasDeCargo;
         }
 
@@ -29,7 +36,7 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                var cargos = _consultasDeCargo.RecuperarTodos();
+                var cargos = await _consultasDeCargo.RecuperarTodos();
 
                 return Ok(cargos);
             }
@@ -49,7 +56,7 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                var cargo = _servicoDeCargo.RecuperarPorId(id);
+                var cargo = await _consultasDeCargo.RecuperarPorId(id);
 
                 return Ok(cargo);
             }
@@ -69,8 +76,7 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                //Revisar este item
-                var cargos = _consultasDeCargo.RecuperarPorFiltro(filtro);
+                var cargos = await _consultasDeCargo.RecuperarPorFiltro(filtro);
 
                 return Ok(cargos);
             }
@@ -92,9 +98,13 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                var cargo = _servicoDeCargo.Salvar(dto);
+                var cargo = await _consultasDeCargo.RecuperarPorFiltro(new Filtro { Descricao = dto.Descricao});
+                if(cargo.Count() > 0)
+                    _notificationContext.AddNotification("","Cargo já cadastrado");
+                else
+                    await _armazenadorDeCargo.Salvar(dto);
 
-                return Ok(cargo?.Id);
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -113,9 +123,9 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                var cargo = _servicoDeCargo.Alterar(id, dto);
+                await _alteradorDeCargo.Alterar(id, dto);
 
-                return Ok(cargo);
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -134,7 +144,7 @@ namespace OnboardSIGDB1.Controllers
         {
             try
             {
-                _servicoDeCargo.Excluir(id);
+                await _removedorDeCargo.Excluir(id);
 
                 return NoContent();
             }
