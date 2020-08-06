@@ -127,3 +127,5 @@ C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardS
 C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1\obj\Debug\netcoreapp3.1\OnboardSIGDB1.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1\bin\Debug\netcoreapp3.1\OnboardSIGDB1.Utils.dll
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1\bin\Debug\netcoreapp3.1\OnboardSIGDB1.Utils.pdb

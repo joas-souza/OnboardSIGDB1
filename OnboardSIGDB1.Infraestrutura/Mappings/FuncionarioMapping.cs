@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using OnboardSIGDB1.Dominio.Constantes;
 using OnboardSIGDB1.Dominio.Entidades;
-
+using OnboardSIGDB1.Utils.Constantes;
 
 namespace OnboardSIGDB1.Infraestrutura.Mappings
 {

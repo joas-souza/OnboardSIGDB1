@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OnboardSIGDB1.Dominio.Constantes
+namespace OnboardSIGDB1.Utils.Constantes
 {
     public class Consts
     {

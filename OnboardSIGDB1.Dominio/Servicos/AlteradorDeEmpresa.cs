@@ -1,6 +1,7 @@
 ﻿using OnboardSIGDB1.Dominio.Dtos.Empresa;
 using OnboardSIGDB1.Dominio.Interfaces;
 using OnboardSIGDB1.Dominio.Servicos.Notificacoes;
+using OnboardSIGDB1.Utils.Resources;
 using System.Threading.Tasks;
 
 namespace OnboardSIGDB1.Dominio.Servicos
@@ -35,7 +36,7 @@ namespace OnboardSIGDB1.Dominio.Servicos
                         _notificationContext.AddNotifications(empresa.Result);
                 }
                 else
-                    _notificationContext.AddNotification("", "Empresa não localizada");
+                    _notificationContext.AddNotification("", Resource.EmpresaNaoLocalizada);
             }
         }
 
@@ -43,7 +44,7 @@ namespace OnboardSIGDB1.Dominio.Servicos
         {
             if (id != empresaDto.Id)
             {
-                _notificationContext.AddNotification("", "Empresa não identificada");
+                _notificationContext.AddNotification("", Resource.EmpresaNaoIdentificada);
                 return false;
             }
 

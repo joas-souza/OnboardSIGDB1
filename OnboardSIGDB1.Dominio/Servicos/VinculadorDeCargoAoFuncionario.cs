@@ -1,6 +1,7 @@
 ﻿using OnboardSIGDB1.Dominio.Entidades;
 using OnboardSIGDB1.Dominio.Interfaces;
 using OnboardSIGDB1.Dominio.Servicos.Notificacoes;
+using OnboardSIGDB1.Utils.Resources;
 using System.Threading.Tasks;
 
 namespace OnboardSIGDB1.Dominio.Servicos
@@ -40,20 +41,20 @@ namespace OnboardSIGDB1.Dominio.Servicos
                    // await _repositorioDeFuncionario.Alterar(funcionario);
                 }
                 else
-                    _notificationContext.AddNotification("", "Cargo não localizado");
+                    _notificationContext.AddNotification("", Resource.CargoNaoLocalizado);
             }
         }
 
         private void ValidarFuncionario(Funcionario funcionario)
         {
             if (funcionario == null)
-                _notificationContext.AddNotification("", "Funcionário não localizado");
+                _notificationContext.AddNotification("", Resource.FuncionarioNaoLocalizado);
         }
 
         private void ValidarEmpresa(int? empresaId)
         {
             if (empresaId  == null)
-                _notificationContext.AddNotification("", "Funcionário não vinculado a nenhuma empresa");
+                _notificationContext.AddNotification("", Resource.FuncionarioNaoVinculadoEmpresa);
         }
     }
 }

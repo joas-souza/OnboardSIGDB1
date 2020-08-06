@@ -22,3 +22,5 @@ C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardS
 C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Infraestrutura\obj\Debug\netstandard2.0\OnboardSIGDB1.Infraestrutura.dll
 C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Infraestrutura\obj\Debug\netstandard2.0\OnboardSIGDB1.Infraestrutura.pdb
 C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Infraestrutura\obj\Debug\netstandard2.0\OnboardSIGDB1.Infraestrutura.csproj.CoreCompileInputs.cache
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Infraestrutura\bin\Debug\netstandard2.0\OnboardSIGDB1.Utils.dll
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Infraestrutura\bin\Debug\netstandard2.0\OnboardSIGDB1.Utils.pdb

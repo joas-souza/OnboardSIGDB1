@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using OnboardSIGDB1.Dominio.Constantes;
+using OnboardSIGDB1.Utils.Constantes;
+using OnboardSIGDB1.Utils.Resources;
 using System;
-using System.Globalization;
 
 namespace OnboardSIGDB1.Dominio.Entidades
 {
@@ -36,15 +36,15 @@ namespace OnboardSIGDB1.Dominio.Entidades
         public override bool Validar()
         {
             RuleFor(e => e.Nome)
-            .NotEmpty().WithMessage("Nome inválido")
-            .MaximumLength(Consts.QuantidadeMaximaDeCaracteresParaNome).WithMessage("O nome deve ter no máximo 150 caracteres");
+            .NotEmpty().WithMessage(Resource.NomeInvalido)
+            .MaximumLength(Consts.QuantidadeMaximaDeCaracteresParaNome).WithMessage(Resource.TamanhoMaximoDoNome);
 
             RuleFor(e => e.Cnpj)
             .MaximumLength(Consts.TamanhoMaximoCnpj)
-            .Must(CnpjValido).WithMessage("Cnpj inválido");
+            .Must(CnpjValido).WithMessage(Resource.CnpjInvalido);
  
             RuleFor(e => e.DataFundacao.ToString())
-                .Must(DataValida).WithMessage("Data da fundação inválida");
+                .Must(DataValida).WithMessage(Resource.DataInvalida);
 
             Result = Validate(this);
 

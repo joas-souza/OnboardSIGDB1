@@ -1830,13 +1830,24 @@
           "AutoMapper": "8.0.0",
           "FluentValidation": "8.2.3",
           "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0",
-          "Newtonsoft.Json": "12.0.3"
+          "Newtonsoft.Json": "12.0.3",
+          "OnboardSIGDB1.Utils": "1.0.0"
         },
         "compile": {
           "bin/placeholder/OnboardSIGDB1.Dominio.dll": {}
         },
         "runtime": {
           "bin/placeholder/OnboardSIGDB1.Dominio.dll": {}
+        }
+      },
+      "OnboardSIGDB1.Utils/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/OnboardSIGDB1.Utils.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OnboardSIGDB1.Utils.dll": {}
         }
       }
     }
@@ -6527,6 +6538,11 @@
       "type": "project",
       "path": "../OnboardSIGDB1.Dominio/OnboardSIGDB1.Dominio.csproj",
       "msbuildProject": "../OnboardSIGDB1.Dominio/OnboardSIGDB1.Dominio.csproj"
+    },
+    "OnboardSIGDB1.Utils/1.0.0": {
+      "type": "project",
+      "path": "../OnboardSIGDB1.Utils/OnboardSIGDB1.Utils.csproj",
+      "msbuildProject": "../OnboardSIGDB1.Utils/OnboardSIGDB1.Utils.csproj"
     }
   },
   "projectFileDependencyGroups": {

@@ -3,7 +3,8 @@ using OnboardSIGDB1.Dominio.Dtos.Funcionario;
 using OnboardSIGDB1.Dominio.Entidades;
 using OnboardSIGDB1.Dominio.Interfaces;
 using OnboardSIGDB1.Dominio.Servicos.Notificacoes;
-using OnboardSIGDB1.Dominio.Utils;
+using OnboardSIGDB1.Utils;
+using OnboardSIGDB1.Utils.Resources;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,12 +27,12 @@ namespace OnboardSIGDB1.Dominio.Servicos
 
         public async Task Salvar(FuncionarioDto funcionarioDto)
         {
-            funcionarioDto.Cpf = MetodosUteis.RemoverMascara(funcionarioDto.Cpf);
+            funcionarioDto.Cpf = Util.RemoverMascara(funcionarioDto.Cpf);
 
             var funcionarioCadastrado = await _consultasDeFuncionario.RecuperarPorFiltro(new Filtro { Cpf = funcionarioDto.Cpf });
 
             if (funcionarioCadastrado.Count()>0)
-                _notificationContext.AddNotification("", "Funcionário já cadastrado");
+                _notificationContext.AddNotification("", Resource.FuncionarioJaCadastrado);
             else
             {
                 var funcionario = Mapper.Map<Funcionario>(funcionarioDto);

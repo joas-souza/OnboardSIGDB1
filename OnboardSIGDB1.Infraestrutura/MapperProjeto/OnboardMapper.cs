@@ -3,7 +3,7 @@ using OnboardSIGDB1.Dominio.Dtos.Cargo;
 using OnboardSIGDB1.Dominio.Dtos.Empresa;
 using OnboardSIGDB1.Dominio.Dtos.Funcionario;
 using OnboardSIGDB1.Dominio.Entidades;
-using OnboardSIGDB1.Dominio.Utils;
+using OnboardSIGDB1.Utils;
 using System.Linq;
 
 namespace OnboardSIGDB1.Infraestrutura.MapperProjeto
@@ -19,11 +19,11 @@ namespace OnboardSIGDB1.Infraestrutura.MapperProjeto
             CreateMap<EmpresaDto, Empresa>();
 
             CreateMap<Funcionario, FuncionarioDto>()
-                    .ForMember(dest => dest.Cpf, o => o.MapFrom(src => MetodosUteis.RemoverMascara(src.Cpf)))
+                    .ForMember(dest => dest.Cpf, o => o.MapFrom(src => Util.RemoverMascara(src.Cpf)))
                     .ForMember(dest => dest.CargoId, o => o.MapFrom(src => src.CargosFuncionario.FirstOrDefault().CargoId));
 
             CreateMap<FuncionarioDto, Funcionario>()
-                    .ForMember(dest => dest.Cpf, o => o.MapFrom(src => MetodosUteis.RemoverMascara(src.Cpf)));
+                    .ForMember(dest => dest.Cpf, o => o.MapFrom(src => Util.RemoverMascara(src.Cpf)));
         }
     }
 }

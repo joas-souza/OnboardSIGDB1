@@ -1348,7 +1348,8 @@
           "AutoMapper": "8.0.0",
           "FluentValidation": "8.2.3",
           "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0",
-          "Newtonsoft.Json": "12.0.3"
+          "Newtonsoft.Json": "12.0.3",
+          "OnboardSIGDB1.Utils": "1.0.0"
         },
         "runtime": {
           "OnboardSIGDB1.Dominio.dll": {}
@@ -1371,6 +1372,14 @@
         },
         "compile": {
           "OnboardSIGDB1.Infraestrutura.dll": {}
+        }
+      },
+      "OnboardSIGDB1.Utils/1.0.0": {
+        "runtime": {
+          "OnboardSIGDB1.Utils.dll": {}
+        },
+        "compile": {
+          "OnboardSIGDB1.Utils.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -3729,6 +3738,11 @@
       "sha512": ""
     },
     "OnboardSIGDB1.Infraestrutura/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "OnboardSIGDB1.Utils/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,6 +1,7 @@
 ﻿using OnboardSIGDB1.Dominio.Dtos.Funcionario;
 using OnboardSIGDB1.Dominio.Interfaces;
 using OnboardSIGDB1.Dominio.Servicos.Notificacoes;
+using OnboardSIGDB1.Utils.Resources;
 using System.Threading.Tasks;
 
 namespace OnboardSIGDB1.Dominio.Servicos
@@ -34,7 +35,7 @@ namespace OnboardSIGDB1.Dominio.Servicos
                         _notificationContext.AddNotifications(funcionario.Result);
                 }
                 else
-                    _notificationContext.AddNotification("", "Funcionário não localizado");
+                    _notificationContext.AddNotification("", Resource.FuncionarioNaoLocalizado);
             }
         }
 
@@ -42,7 +43,7 @@ namespace OnboardSIGDB1.Dominio.Servicos
         {
             if (id != funcionarioDto.Id)
             {
-                _notificationContext.AddNotification("", "Funcionário não identificado");
+                _notificationContext.AddNotification("", Resource.FuncionarioNaoIdentificado);
                 return false;
             }
 

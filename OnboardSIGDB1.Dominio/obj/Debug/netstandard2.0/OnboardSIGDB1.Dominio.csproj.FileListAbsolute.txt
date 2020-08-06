@@ -16,3 +16,6 @@ C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardS
 C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Dominio\obj\Debug\netstandard2.0\OnboardSIGDB1.Dominio.pdb
 C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Dominio\obj\Debug\netstandard2.0\OnboardSIGDB1.Dominio.csproj.CoreCompileInputs.cache
 C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Dominio\obj\Debug\netstandard2.0\OnboardSIGDB1.Dominio.csprojAssemblyReference.cache
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Dominio\bin\Debug\netstandard2.0\OnboardSIGDB1.Utils.dll
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Dominio\bin\Debug\netstandard2.0\OnboardSIGDB1.Utils.pdb
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Dominio\obj\Debug\netstandard2.0\OnboardSIGDB1.Dominio.csproj.CopyComplete

@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
-using OnboardSIGDB1.Dominio.Constantes;
+using OnboardSIGDB1.Utils.Constantes;
+using OnboardSIGDB1.Utils.Resources;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 
 namespace OnboardSIGDB1.Dominio.Entidades
 {
@@ -62,15 +62,15 @@ namespace OnboardSIGDB1.Dominio.Entidades
         public override bool Validar()
         {
             RuleFor(f => f.Nome)
-            .NotEmpty().WithMessage("Nome inválido")
-            .MaximumLength(Consts.QuantidadeMaximaDeCaracteresParaNome).WithMessage("O nome deve ter no máximo 150 caracteres");
+            .NotEmpty().WithMessage(Resource.NomeInvalido)
+            .MaximumLength(Consts.QuantidadeMaximaDeCaracteresParaNome).WithMessage(Resource.TamanhoMaximoDoNome);
 
             RuleFor(f => f.Cpf)
-            .MaximumLength(Consts.TamanhoMaximoCnpj)
-            .Must(CpfValido).WithMessage("Cpf inválido");
+            .MaximumLength(Consts.TamanhoMaximoCpf)
+            .Must(CpfValido).WithMessage(Resource.CpfInvalido);
 
             RuleFor(f => f.DataContratacao.ToString())
-                .Must(DataValida).WithMessage("Data da contratação inválida");
+                .Must(DataValida).WithMessage(Resource.DataInvalida);
 
             Result = Validate(this);
 

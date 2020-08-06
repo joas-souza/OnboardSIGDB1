@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
-using OnboardSIGDB1.Dominio.Constantes;
+using OnboardSIGDB1.Utils.Constantes;
+using OnboardSIGDB1.Utils.Resources;
 using System.Collections.Generic;
 
 namespace OnboardSIGDB1.Dominio.Entidades
@@ -26,8 +27,8 @@ namespace OnboardSIGDB1.Dominio.Entidades
         public override bool Validar()
         {
             RuleFor(c => c.Descricao)
-                .NotEmpty().WithMessage("Descrição inválida")
-                .MaximumLength(Consts.QuantidadeMaximaDeCaracteresParaDescricao).WithMessage("A descrição deve ter no máximo 250 caracteres");
+                .NotEmpty().WithMessage(Resource.DescricaoInvalida)
+                .MaximumLength(Consts.QuantidadeMaximaDeCaracteresParaDescricao).WithMessage(Resource.TamanhoMaximoDaDescricao);
 
             Result = Validate(this);
 

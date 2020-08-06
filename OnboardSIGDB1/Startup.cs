@@ -11,7 +11,6 @@ using Microsoft.OpenApi.Models;
 using OnboardSIGDB1.Dominio.Interfaces;
 using OnboardSIGDB1.Dominio.Servicos;
 using OnboardSIGDB1.Dominio.Servicos.Notificacoes;
-using OnboardSIGDB1.Dominio.Utils;
 using OnboardSIGDB1.Infraestrutura.Consultas;
 using OnboardSIGDB1.Infraestrutura.Contexto;
 using OnboardSIGDB1.Infraestrutura.MapperProjeto;

@@ -3,7 +3,8 @@ using OnboardSIGDB1.Dominio.Dtos.Empresa;
 using OnboardSIGDB1.Dominio.Entidades;
 using OnboardSIGDB1.Dominio.Interfaces;
 using OnboardSIGDB1.Dominio.Servicos.Notificacoes;
-using OnboardSIGDB1.Dominio.Utils;
+using OnboardSIGDB1.Utils;
+using OnboardSIGDB1.Utils.Resources;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,12 +27,12 @@ namespace OnboardSIGDB1.Dominio.Servicos
 
         public async Task Salvar(EmpresaDto empresaDto)
         {
-            empresaDto.Cnpj = MetodosUteis.RemoverMascara(empresaDto.Cnpj);
+            empresaDto.Cnpj = Util.RemoverMascara(empresaDto.Cnpj);
 
             var empresaCadastrada = await _consultasDeEmpresa.RecuperarPorFiltro(new Filtro { Cnpj = empresaDto.Cnpj });
 
             if (empresaCadastrada.Count() > 0)
-                _notificationContext.AddNotification("", "Empresa já cadastrada");
+                _notificationContext.AddNotification("", Resource.EmpresaJaCadastrada);
             else
             {
                 var empresa = Mapper.Map<Empresa>(empresaDto);
