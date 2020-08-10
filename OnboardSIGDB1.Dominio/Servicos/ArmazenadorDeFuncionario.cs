@@ -29,13 +29,13 @@ namespace OnboardSIGDB1.Dominio.Servicos
         {
             funcionarioDto.Cpf = Util.RemoverMascara(funcionarioDto.Cpf);
 
-            var funcionarioCadastrado = await _consultasDeFuncionario.RecuperarPorFiltro(new Filtro { Cpf = funcionarioDto.Cpf });
+            var funcionarioCadastrado = await _repositorioDeFuncionario.RecuperarPorCpf(funcionarioDto.Cpf );
 
-            if (funcionarioCadastrado.Count()>0)
+            if (funcionarioCadastrado!=null)
                 _notificationContext.AddNotification("", Resource.FuncionarioJaCadastrado);
             else
             {
-                var funcionario = Mapper.Map<Funcionario>(funcionarioDto);
+                var funcionario =new Funcionario(funcionarioDto.Nome, funcionarioDto.Cpf, funcionarioDto.DataContratacao);
 
                 if (funcionario.Validar())
                     await _repositorioDeFuncionario.Salvar(funcionario);

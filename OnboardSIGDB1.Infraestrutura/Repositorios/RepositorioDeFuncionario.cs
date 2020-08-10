@@ -1,6 +1,8 @@
-﻿using OnboardSIGDB1.Dominio.Entidades;
+﻿using Microsoft.EntityFrameworkCore;
+using OnboardSIGDB1.Dominio.Entidades;
 using OnboardSIGDB1.Dominio.Interfaces;
 using OnboardSIGDB1.Infraestrutura.Contexto;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace OnboardSIGDB1.Infraestrutura.Repositorios
@@ -32,6 +34,11 @@ namespace OnboardSIGDB1.Infraestrutura.Repositorios
         public async Task<Funcionario> RecuperarPorId(int id)
         {
             return await _contexto.Funcionarios.FindAsync(id);
+        }
+
+        public async Task<Funcionario> RecuperarPorCpf(string cpf)
+        {
+            return await _contexto.Funcionarios.FirstOrDefaultAsync(f => f.Cpf == cpf);
         }
     }
 }

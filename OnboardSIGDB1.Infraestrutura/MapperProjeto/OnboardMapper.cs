@@ -19,7 +19,7 @@ namespace OnboardSIGDB1.Infraestrutura.MapperProjeto
             CreateMap<EmpresaDto, Empresa>();
 
             CreateMap<Funcionario, FuncionarioDto>()
-                    .ForMember(dest => dest.Cpf, o => o.MapFrom(src => Util.RemoverMascara(src.Cpf)))
+                    .ForMember(dest => dest.Cpf, o => o.MapFrom(src => src.Cpf))
                     .ForMember(dest => dest.CargoId, o => o.MapFrom(src => src.CargosFuncionario.FirstOrDefault().CargoId));
 
             CreateMap<FuncionarioDto, Funcionario>()

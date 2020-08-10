@@ -29,9 +29,7 @@ namespace OnboardSIGDB1.Dominio.Servicos
                     funcionario.AlterarNome(funcionarioDto.Nome);
                     funcionario.AlterarDataContratacao(funcionarioDto.DataContratacao);
 
-                    if (funcionario.Validar())
-                        await _repositorioDeFuncionario.Alterar(funcionario);
-                    else
+                    if (!funcionario.Validar())
                         _notificationContext.AddNotifications(funcionario.Result);
                 }
                 else

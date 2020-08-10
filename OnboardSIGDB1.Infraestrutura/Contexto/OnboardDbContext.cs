@@ -23,7 +23,7 @@ namespace OnboardSIGDB1.Infraestrutura.Contexto
             modelBuilder.ApplyConfiguration(new FuncionarioMapping());
             modelBuilder.ApplyConfiguration(new EmpresaMapping());
             modelBuilder.ApplyConfiguration(new CargoMapping());
-            modelBuilder.ApplyConfiguration(new CargosFuniconarioMapping());
+            modelBuilder.ApplyConfiguration(new CargosFuncionarioMapping());
         }
     }
 }

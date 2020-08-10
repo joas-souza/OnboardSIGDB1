@@ -1,0 +1,23 @@
+[11:48:18.312 Verbose] - BuildManager - Alguns dos caminhos são absolutos. Isso pode impedir que o Live Unit Testing crie no local correto.
+[11:48:18.313 Verbose] - BuildManager - Propriedade BaseOutputPath avaliada como 'bin\' por meio de:
+BaseOutputPath: 'bin\' @ C:\Program Files\dotnet\sdk\3.1.302\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets:31
+[11:48:18.313 Verbose] - BuildManager - Propriedade BaseIntermediateOutputPath avaliada como 'C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1\obj\' por meio de:
+BaseIntermediateOutputPath: '$(MSBuildProjectDirectory)\$(BaseIntermediateOutputPath)' @ C:\Program Files\dotnet\sdk\3.1.302\Sdks\Microsoft.NET.Sdk.Publish\targets\Microsoft.NET.Sdk.Publish.targets:74
+  MSBuildProjectDirectory: 'C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1'
+  BaseIntermediateOutputPath: 'obj\' @ C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Microsoft.Common.props:46
+[11:48:18.313 Verbose] - BuildManager - Propriedade IntermediateOutputPath avaliada como 'obj\Debug\netcoreapp3.1\' por meio de:
+IntermediateOutputPath: '$(IntermediateOutputPath)$(TargetFramework.ToLowerInvariant())\' @ C:\Program Files\dotnet\sdk\3.1.302\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.TargetFrameworkInference.targets:185
+  IntermediateOutputPath: '$(BaseIntermediateOutputPath)$(Configuration)\' @ C:\Program Files\dotnet\sdk\3.1.302\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets:39
+    BaseIntermediateOutputPath: 'obj\' @ C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Microsoft.Common.props:46
+    Configuration: 'Debug'
+[11:48:18.313 Verbose] - BuildManager - Propriedade OutputPath avaliada como 'bin\Debug\netcoreapp3.1\' por meio de:
+OutputPath: '$(OutputPath)$(TargetFramework.ToLowerInvariant())\' @ C:\Program Files\dotnet\sdk\3.1.302\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.TargetFrameworkInference.targets:186
+  OutputPath: '$(BaseOutputPath)$(Configuration)\' @ C:\Program Files\dotnet\sdk\3.1.302\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets:33
+    BaseOutputPath: 'bin\' @ C:\Program Files\dotnet\sdk\3.1.302\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets:31
+    Configuration: 'Debug'
+[11:48:18.313 Verbose] - BuildManager - Propriedade OutDir avaliada como 'bin\Debug\netcoreapp3.1\' por meio de:
+OutDir: '$(OutputPath)' @ C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets:193
+  OutputPath: '$(OutputPath)$(TargetFramework.ToLowerInvariant())\' @ C:\Program Files\dotnet\sdk\3.1.302\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.TargetFrameworkInference.targets:186
+    OutputPath: '$(BaseOutputPath)$(Configuration)\' @ C:\Program Files\dotnet\sdk\3.1.302\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets:33
+      BaseOutputPath: 'bin\' @ C:\Program Files\dotnet\sdk\3.1.302\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.DefaultOutputPaths.targets:31
+      Configuration: 'Debug'

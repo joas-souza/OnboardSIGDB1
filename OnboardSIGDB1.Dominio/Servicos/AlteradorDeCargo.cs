@@ -28,9 +28,7 @@ namespace OnboardSIGDB1.Dominio.Servicos
                 {
                     cargo.AlterarDescricao(cargoDto.Descricao);
 
-                    if (cargo.Validar())
-                        await _repositorioDeCargo.Alterar(cargo);
-                    else
+                    if (!cargo.Validar())
                         _notificationContext.AddNotifications(cargo.Result);
                 }
                 else

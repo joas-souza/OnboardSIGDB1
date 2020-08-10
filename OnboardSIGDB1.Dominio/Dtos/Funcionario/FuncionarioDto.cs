@@ -16,6 +16,6 @@ namespace OnboardSIGDB1.Dominio.Dtos.Funcionario
 
         public int?  EmpresaId { get; set; }
 
-        public int CargoId { get; set; }
+        public int? CargoId { get; set; }
     }
 }

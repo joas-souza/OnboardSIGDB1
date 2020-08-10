@@ -111,7 +111,7 @@ namespace OnboardSIGDB1.Infraestrutura.Migrations
                     b.HasOne("OnboardSIGDB1.Dominio.Entidades.Cargo", "Cargo")
                         .WithMany()
                         .HasForeignKey("CargoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("OnboardSIGDB1.Dominio.Entidades.Funcionario", "Funcionario")

@@ -30,9 +30,7 @@ namespace OnboardSIGDB1.Dominio.Servicos
                     empresa.AlterarNome(empresaDto.Nome);
                     empresa.AlterarDataFundacao(empresaDto.DataFundacao);
 
-                    if (empresa.Validar())
-                        await _repositorioDeEmpresa.Alterar(empresa);
-                    else
+                    if (!empresa.Validar())
                         _notificationContext.AddNotifications(empresa.Result);
                 }
                 else

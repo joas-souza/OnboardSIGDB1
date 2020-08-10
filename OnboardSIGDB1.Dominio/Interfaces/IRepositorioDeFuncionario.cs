@@ -15,5 +15,7 @@ namespace OnboardSIGDB1.Dominio.Interfaces
         Task Excluir(int id);
 
         Task<Funcionario> RecuperarPorId(int id);
+
+        Task<Funcionario> RecuperarPorCpf(string cpf);
     }
 }

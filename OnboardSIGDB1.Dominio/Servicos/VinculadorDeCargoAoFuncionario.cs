@@ -26,8 +26,10 @@ namespace OnboardSIGDB1.Dominio.Servicos
         {
             var funcionario = await _repositorioDeFuncionario.RecuperarPorId(id);
 
-            ValidarFuncionario(funcionario);
-            ValidarEmpresa(funcionario.EmpresaId);
+            if (funcionario == null)
+                _notificationContext.AddNotification("", Resource.FuncionarioNaoLocalizado);
+            else if(funcionario.EmpresaId == null)
+                _notificationContext.AddNotification("", Resource.FuncionarioNaoVinculadoEmpresa);
 
             if (!_notificationContext.HasNotifications)
             {
@@ -36,25 +38,10 @@ namespace OnboardSIGDB1.Dominio.Servicos
                 if (cargo != null)
                 {
                     funcionario.AdicionarCargo(cargo);
-
-                    //funcionario.AlterarCargo(cargo);
-                   // await _repositorioDeFuncionario.Alterar(funcionario);
                 }
                 else
                     _notificationContext.AddNotification("", Resource.CargoNaoLocalizado);
             }
-        }
-
-        private void ValidarFuncionario(Funcionario funcionario)
-        {
-            if (funcionario == null)
-                _notificationContext.AddNotification("", Resource.FuncionarioNaoLocalizado);
-        }
-
-        private void ValidarEmpresa(int? empresaId)
-        {
-            if (empresaId  == null)
-                _notificationContext.AddNotification("", Resource.FuncionarioNaoVinculadoEmpresa);
         }
     }
 }

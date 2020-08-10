@@ -29,7 +29,7 @@ namespace OnboardSIGDB1.Dominio.Servicos
                 if (empresa != null)
                 {
                     funcionario.AlterarEmpresa(empresa);
-                    await _repositorioDeFuncionario.Alterar(funcionario);
+
                 }
                 else
                     _notificationContext.AddNotification("", Resource.EmpresaNaoLocalizada);

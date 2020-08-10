@@ -1,0 +1,13 @@
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\.vs\OnboardSIGDB1\v16\lut\0\b\OnboardSIGDB1.DominioTeste\Debug\netcoreapp3.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\.vs\OnboardSIGDB1\v16\lut\0\b\OnboardSIGDB1.DominioTeste\Debug\netcoreapp3.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\.vs\OnboardSIGDB1\v16\lut\0\b\OnboardSIGDB1.DominioTeste\Debug\netcoreapp3.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\.vs\OnboardSIGDB1\v16\lut\0\b\OnboardSIGDB1.DominioTeste\Debug\netcoreapp3.1\OnboardSIGDB1.DominioTeste.deps.json
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\.vs\OnboardSIGDB1\v16\lut\0\b\OnboardSIGDB1.DominioTeste\Debug\netcoreapp3.1\OnboardSIGDB1.DominioTeste.runtimeconfig.json
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\.vs\OnboardSIGDB1\v16\lut\0\b\OnboardSIGDB1.DominioTeste\Debug\netcoreapp3.1\OnboardSIGDB1.DominioTeste.runtimeconfig.dev.json
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\.vs\OnboardSIGDB1\v16\lut\0\b\OnboardSIGDB1.DominioTeste\Debug\netcoreapp3.1\OnboardSIGDB1.DominioTeste.dll
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\.vs\OnboardSIGDB1\v16\lut\0\i\OnboardSIGDB1.DominioTeste\Debug\netcoreapp3.1\OnboardSIGDB1.DominioTeste.csprojAssemblyReference.cache
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\.vs\OnboardSIGDB1\v16\lut\0\i\OnboardSIGDB1.DominioTeste\Debug\netcoreapp3.1\OnboardSIGDB1.DominioTeste.AssemblyInfoInputs.cache
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\.vs\OnboardSIGDB1\v16\lut\0\i\OnboardSIGDB1.DominioTeste\Debug\netcoreapp3.1\OnboardSIGDB1.DominioTeste.AssemblyInfo.cs
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\.vs\OnboardSIGDB1\v16\lut\0\i\OnboardSIGDB1.DominioTeste\Debug\netcoreapp3.1\OnboardSIGDB1.DominioTeste.csproj.CopyComplete
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\.vs\OnboardSIGDB1\v16\lut\0\i\OnboardSIGDB1.DominioTeste\Debug\netcoreapp3.1\OnboardSIGDB1.DominioTeste.dll
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\.vs\OnboardSIGDB1\v16\lut\0\i\OnboardSIGDB1.DominioTeste\Debug\netcoreapp3.1\OnboardSIGDB1.DominioTeste.genruntimeconfig.cache

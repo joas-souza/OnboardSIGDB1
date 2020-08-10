@@ -5,9 +5,8 @@ using System.Text;
 
 namespace OnboardSIGDB1.Dominio.Entidades
 {
-    public class CargoFuncionario//: Base<CargoFuncionario>
+    public class CargoFuncionario
     {
-
         protected CargoFuncionario() { }
 
         public CargoFuncionario(Cargo cargo,Funcionario funcionario)
@@ -20,10 +19,5 @@ namespace OnboardSIGDB1.Dominio.Entidades
         public virtual Cargo Cargo { get; set; }
         public int FuncionarioId { get; set; }
         public virtual Funcionario Funcionario { get; set; }
-
-        //public override bool Validar()
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

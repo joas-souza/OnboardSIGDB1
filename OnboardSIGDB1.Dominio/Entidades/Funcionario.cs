@@ -1,8 +1,10 @@
 ﻿using FluentValidation;
+using OnboardSIGDB1.Utils;
 using OnboardSIGDB1.Utils.Constantes;
 using OnboardSIGDB1.Utils.Resources;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace OnboardSIGDB1.Dominio.Entidades
 {
@@ -10,9 +12,8 @@ namespace OnboardSIGDB1.Dominio.Entidades
     { 
         protected Funcionario (){ }
 
-        public Funcionario(int id, string nome, string cpf, DateTime dataContratacao)
+        public Funcionario(string nome, string cpf, DateTime dataContratacao)
         {
-            Id = id;
             Nome = nome;
             Cpf = cpf;
             DataContratacao = dataContratacao;
@@ -44,6 +45,11 @@ namespace OnboardSIGDB1.Dominio.Entidades
             DataContratacao = data;
         }
 
+        public void AlterarEmpresaId(int id)
+        {
+            EmpresaId = id;
+        }
+
         public void AlterarEmpresa (Empresa empresa)
         {
             Empresa = empresa;
@@ -52,6 +58,18 @@ namespace OnboardSIGDB1.Dominio.Entidades
         public void AdicionarCargo(Cargo cargo)
         {
             CargosFuncionario.Add(new CargoFuncionario(cargo,this));
+        }
+
+        public void RemoveCargo(Cargo cargo)
+        {
+            var cargoFuncionario = CargosFuncionario.FirstOrDefault(c => c.CargoId == cargo.Id);
+
+            CargosFuncionario.Remove(cargoFuncionario);
+        }
+
+        public void ExcluirCargo()
+        {
+            CargosFuncionario = null;
         }
 
         //public void AlterarCargo(Cargo cargo)
@@ -67,58 +85,14 @@ namespace OnboardSIGDB1.Dominio.Entidades
 
             RuleFor(f => f.Cpf)
             .MaximumLength(Consts.TamanhoMaximoCpf)
-            .Must(CpfValido).WithMessage(Resource.CpfInvalido);
+            .Must(Util.CpfValido).WithMessage(Resource.CpfInvalido);
 
-            RuleFor(f => f.DataContratacao.ToString())
-                .Must(DataValida).WithMessage(Resource.DataInvalida);
+            RuleFor(f => f.DataContratacao)
+                .Must(Util.DataValida).WithMessage(Resource.DataInvalida);
 
             Result = Validate(this);
 
             return Validate(this).IsValid;
-        }
-
-        private static bool DataValida(string data)
-        {
-            if (DateTime.TryParse(data, out var resultado))
-                return true;
-            else
-                return false;
-        }
-
-        private static bool CpfValido(string cpf)
-        {
-            int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-            int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-            string tempCpf;
-            string digito;
-            int soma;
-            int resto;
-            cpf = cpf.Trim();
-            cpf = cpf.Replace(".", "").Replace("-", "");
-            if (cpf.Length != 11)
-                return false;
-            tempCpf = cpf.Substring(0, 9);
-            soma = 0;
-
-            for (int i = 0; i < 9; i++)
-                soma += int.Parse(tempCpf[i].ToString()) * multiplicador1[i];
-            resto = soma % 11;
-            if (resto < 2)
-                resto = 0;
-            else
-                resto = 11 - resto;
-            digito = resto.ToString();
-            tempCpf = tempCpf + digito;
-            soma = 0;
-            for (int i = 0; i < 10; i++)
-                soma += int.Parse(tempCpf[i].ToString()) * multiplicador2[i];
-            resto = soma % 11;
-            if (resto < 2)
-                resto = 0;
-            else
-                resto = 11 - resto;
-            digito = digito + resto.ToString();
-            return cpf.EndsWith(digito);
         }
     }
 }

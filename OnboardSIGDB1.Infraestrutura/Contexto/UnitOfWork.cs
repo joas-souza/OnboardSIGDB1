@@ -1,7 +1,4 @@
 ﻿using OnboardSIGDB1.Dominio.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace OnboardSIGDB1.Infraestrutura.Contexto
