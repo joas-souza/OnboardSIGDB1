@@ -8259,7 +8259,8 @@
   },
   "packageFolders": {
     "C:\\Users\\joas.souza\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -8271,7 +8272,8 @@
       "outputPath": "C:\\Users\\joas.souza\\Documents\\Projetos\\OnboardSIGDB1_Back\\OnboardSIGDB1\\OnboardSIGDB1.DominioTeste\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\joas.souza\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8283,7 +8285,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://gesigsenac.pkgs.visualstudio.com/_packaging/SigPackage/nuget/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {

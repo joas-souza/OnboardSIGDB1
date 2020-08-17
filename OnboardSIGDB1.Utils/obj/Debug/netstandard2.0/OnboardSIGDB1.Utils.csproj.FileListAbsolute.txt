@@ -1,0 +1,9 @@
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Utils\bin\Debug\netstandard2.0\OnboardSIGDB1.Utils.deps.json
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Utils\bin\Debug\netstandard2.0\OnboardSIGDB1.Utils.dll
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Utils\bin\Debug\netstandard2.0\OnboardSIGDB1.Utils.pdb
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Utils\obj\Debug\netstandard2.0\OnboardSIGDB1.Utils.csprojAssemblyReference.cache
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Utils\obj\Debug\netstandard2.0\OnboardSIGDB1.Utils.AssemblyInfoInputs.cache
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Utils\obj\Debug\netstandard2.0\OnboardSIGDB1.Utils.AssemblyInfo.cs
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Utils\obj\Debug\netstandard2.0\OnboardSIGDB1.Utils.csproj.CoreCompileInputs.cache
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Utils\obj\Debug\netstandard2.0\OnboardSIGDB1.Utils.dll
+C:\Users\joas.souza\Documents\Projetos\OnboardSIGDB1_Back\OnboardSIGDB1\OnboardSIGDB1.Utils\obj\Debug\netstandard2.0\OnboardSIGDB1.Utils.pdb

@@ -22,16 +22,19 @@ namespace OnboardSIGDB1.DominioTeste.Funcionario
         private readonly Mock<IRepositorioDeCargo> _repositorioDeCargo;
         private readonly Mock<NotificationContext> _notificationContext;
         private readonly Faker _fake;
+        private readonly Cargo _cargo;
 
         public VinculadorDeCargoAoFuncionarioTeste()
         {
             _fake = new Faker();
+            _cargo = new Cargo(1, "Desenvolvedor");
             _funcionarioDto = new FuncionarioDto
             {
+                Id = 1,
                 Nome = _fake.Person.FullName,
                 Cpf = _fake.Person.Cpf(),
                 DataContratacao = DateTime.Now,
-                EmpresaId = null,
+                EmpresaId = 1,
                 CargoId = 1
             };
             _funcionarioRepositorioMock = new Mock<IRepositorioDeFuncionario>();
@@ -43,7 +46,6 @@ namespace OnboardSIGDB1.DominioTeste.Funcionario
         [Fact]
         public async Task NaoDeveVincularCargoAFuncionarioNaoExistente()
         {
-            _funcionarioDto.Id = 1;
             _funcionarioRepositorioMock.Setup(r => r.RecuperarPorId(_funcionarioDto.Id));
 
             await _vinculadorDeCargoAoFuncionario.VincularCargo(_funcionarioDto.Id, (int)_funcionarioDto.CargoId);
@@ -54,7 +56,6 @@ namespace OnboardSIGDB1.DominioTeste.Funcionario
         [Fact]
         public async Task NaoDeveVincularCargoAFuncionarioSemEmpresa()
         {
-            _funcionarioDto.Id = 1;
             var funcionario = FuncionarioBuilder.Novo().Build();
             _funcionarioRepositorioMock.Setup(r => r.RecuperarPorId(_funcionarioDto.Id)).ReturnsAsync(funcionario);
 
@@ -66,11 +67,9 @@ namespace OnboardSIGDB1.DominioTeste.Funcionario
         [Fact]
         public async Task DeveVincularCargoAoFuncionario()
         {
-            _funcionarioDto.Id = 1;
-            _funcionarioDto.CargoId = 1;
-            var funcionario = FuncionarioBuilder.Novo().ComEmpresa(1).Build();
+            var funcionario = FuncionarioBuilder.Novo().ComEmpresa((int)_funcionarioDto.EmpresaId).Build();
             _funcionarioRepositorioMock.Setup(r => r.RecuperarPorId(_funcionarioDto.Id)).ReturnsAsync(funcionario);
-            _repositorioDeCargo.Setup(c => c.RecuperarPorId((int)_funcionarioDto.CargoId)).ReturnsAsync(new Cargo(1, "Desenvolvedor"));
+            _repositorioDeCargo.Setup(c => c.RecuperarPorId((int)_funcionarioDto.CargoId)).ReturnsAsync(_cargo);
 
             await _vinculadorDeCargoAoFuncionario.VincularCargo(_funcionarioDto.Id, (int)_funcionarioDto.CargoId);
 
@@ -80,9 +79,7 @@ namespace OnboardSIGDB1.DominioTeste.Funcionario
         [Fact]
         public async Task NaoDeveVincularCargoNaoExistente()
         {
-            _funcionarioDto.Id = 1;
-            _funcionarioDto.CargoId = 1;
-            var funcionario = FuncionarioBuilder.Novo().ComEmpresa(1).Build();
+            var funcionario = FuncionarioBuilder.Novo().ComEmpresa((int)_funcionarioDto.EmpresaId).Build();
             _funcionarioRepositorioMock.Setup(r => r.RecuperarPorId(_funcionarioDto.Id)).ReturnsAsync(funcionario);
 
             await _vinculadorDeCargoAoFuncionario.VincularCargo(_funcionarioDto.Id, (int)_funcionarioDto.CargoId);

@@ -1,26 +1,17 @@
-﻿using AutoMapper.Mappers;
-using Bogus;
-using Bogus.DataSets;
+﻿using Bogus;
 using Bogus.Extensions.Brazil;
 using ExpectedObjects;
-using OnboardSIGDB1.Dominio.Entidades;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace OnboardSIGDB1.DominioTeste.Funcionario
 {
     public class FuncionarioTeste
     {
-
         private readonly int _id;
         private readonly string _nome;
         private readonly string _cpf;
         private readonly DateTime _dataContratacao;
-        private readonly Empresa _empresa;
-        private readonly double _valor;
-        private readonly IList<CargoFuncionario> _cargosFuncionario;
 
         private readonly Faker _faker;
 
@@ -66,19 +57,18 @@ namespace OnboardSIGDB1.DominioTeste.Funcionario
         [InlineData("000.111.333-4")]
         [InlineData("0001115554")]
         [InlineData("000")]
-        public void NaoDeveTerCpfInvalido(string cpf)
+        public void NaoDeveTerCpfInvalido(string cpfInvalido)
         {
-            var funcionario = FuncionarioBuilder.Novo().ComCpf(cpf).Build();
+            var funcionario = FuncionarioBuilder.Novo().ComCpf(cpfInvalido).Build();
 
             Assert.False(funcionario.Validar());
         }
 
-        [Theory]
-        [InlineData(null)]
-        //[InlineData(DateTime.MinValue]
-        public void NaoDeveTerDataInvalida(DateTime data)
+        [Fact]
+        public void NaoDeveTerDataInvalida()
         {
-            var funcionario = FuncionarioBuilder.Novo().ComDataContratacao(data).Build();
+            var dataInvalida = DateTime.MinValue;
+            var funcionario = FuncionarioBuilder.Novo().ComDataContratacao(dataInvalida).Build();
 
             Assert.False(funcionario.Validar());
         }
@@ -117,14 +107,13 @@ namespace OnboardSIGDB1.DominioTeste.Funcionario
             Assert.True(funcionario.Validar());
         }
 
-        [Theory]
-        [InlineData(null)]
-        //[InlineData(DateTime.MinValue]
-        public void NaoDeveAlterarDataInvalida(DateTime data)
+        [Fact]
+        public void NaoDeveAlterarDataInvalida()
         {
+            var dataInvalida = DateTime.MinValue;
             var funcionario = FuncionarioBuilder.Novo().Build();
 
-            funcionario.AlterarDataContratacao(data);
+            funcionario.AlterarDataContratacao(dataInvalida);
 
             Assert.False(funcionario.Validar());
         } 

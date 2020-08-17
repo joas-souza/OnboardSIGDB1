@@ -2,7 +2,6 @@
 using Bogus.Extensions.Brazil;
 using Moq;
 using OnboardSIGDB1.Dominio.Dtos.Funcionario;
-using OnboardSIGDB1.Dominio.Entidades;
 using OnboardSIGDB1.Dominio.Interfaces;
 using OnboardSIGDB1.Dominio.Servicos;
 using OnboardSIGDB1.Dominio.Servicos.Notificacoes;
@@ -27,10 +26,11 @@ namespace OnboardSIGDB1.DominioTeste.Funcionario
             _fake = new Faker();
             _funcionarioDto = new FuncionarioDto
             {
+                Id = 34,
                 Nome = _fake.Person.FullName,
                 Cpf = _fake.Person.Cpf(),
                 DataContratacao = DateTime.Now,
-                EmpresaId = null,
+                EmpresaId = 34,
                 CargoId = 1
             };
             _funcionarioRepositorioMock = new Mock<IRepositorioDeFuncionario>();
@@ -41,8 +41,7 @@ namespace OnboardSIGDB1.DominioTeste.Funcionario
         [Fact]
         public async Task DeveRemoverFuncionario()
         {
-            _funcionarioDto.Id = 34;
-            var funcionario = FuncionarioBuilder.Novo().ComEmpresa(34).Build();
+            var funcionario = FuncionarioBuilder.Novo().ComEmpresa((int)_funcionarioDto.EmpresaId).Build();
             _funcionarioRepositorioMock.Setup(r => r.RecuperarPorId(_funcionarioDto.Id)).ReturnsAsync(funcionario);
 
             await _removedorDeFuncionario.Excluir(_funcionarioDto.Id);
@@ -53,7 +52,6 @@ namespace OnboardSIGDB1.DominioTeste.Funcionario
         [Fact]
         public async Task NaoRemoverFuncionarioNaoExistente()
         {
-            _funcionarioDto.Id = 1;
             _funcionarioRepositorioMock.Setup(r => r.RecuperarPorId(_funcionarioDto.Id));
 
             await _removedorDeFuncionario.Excluir(_funcionarioDto.Id);

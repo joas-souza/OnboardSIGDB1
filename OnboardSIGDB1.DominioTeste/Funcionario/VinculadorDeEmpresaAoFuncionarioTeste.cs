@@ -21,6 +21,7 @@ namespace OnboardSIGDB1.DominioTeste.Funcionario
         private readonly Mock<IRepositorioDeFuncionario> _funcionarioRepositorioMock;
         private readonly Mock<IRepositorioDeEmpresa> _repositorioDeEmpresa;
         private readonly Mock<NotificationContext> _notificationContext;
+        private readonly Empresa _empresa;
         private readonly Faker _fake;
 
         public VinculadorDeEmpresaAoFuncionarioTeste()
@@ -28,23 +29,23 @@ namespace OnboardSIGDB1.DominioTeste.Funcionario
             _fake = new Faker();
             _funcionarioDto = new FuncionarioDto
             {
+                Id = 1,
                 Nome = _fake.Person.FullName,
                 Cpf = _fake.Person.Cpf(),
                 DataContratacao = DateTime.Now,
-                EmpresaId = null,
+                EmpresaId = 2,
                 CargoId = 1
             };
             _funcionarioRepositorioMock = new Mock<IRepositorioDeFuncionario>();
             _repositorioDeEmpresa = new Mock<IRepositorioDeEmpresa>();
             _notificationContext = new Mock<NotificationContext>();
             _vinculadorDeEmpresaAoFuncionario = new VinculadorDeEmpresaAoFuncionario(_funcionarioRepositorioMock.Object, _repositorioDeEmpresa.Object, _notificationContext.Object);
+            _empresa = new Empresa(2, "DB1", "001.002.455/0001-75", DateTime.Now);
         }
 
         [Fact]
         public async Task NaoDeveVincularEmpresaAFuncionarioNaoExistente()
         {
-            _funcionarioDto.Id = 1;
-            _funcionarioDto.EmpresaId = 1;
             _funcionarioRepositorioMock.Setup(r => r.RecuperarPorId(_funcionarioDto.Id));
 
             await _vinculadorDeEmpresaAoFuncionario.VincularEmpresa(_funcionarioDto.Id, (int)_funcionarioDto.EmpresaId);
@@ -55,11 +56,9 @@ namespace OnboardSIGDB1.DominioTeste.Funcionario
         [Fact]
         public async Task DeveVincularEmpresaAoFuncionario()
         {
-            _funcionarioDto.Id = 1;
-            _funcionarioDto.EmpresaId = 2;
             var funcionario = FuncionarioBuilder.Novo().Build();
             _funcionarioRepositorioMock.Setup(r => r.RecuperarPorId(_funcionarioDto.Id)).ReturnsAsync(funcionario);
-            _repositorioDeEmpresa.Setup(e => e.RecuperarPorId((int)_funcionarioDto.EmpresaId)).ReturnsAsync(new Empresa(2, "DB1", "001.002.455/0001-75", DateTime.Now));
+            _repositorioDeEmpresa.Setup(e => e.RecuperarPorId((int)_funcionarioDto.EmpresaId)).ReturnsAsync(_empresa);
 
             await _vinculadorDeEmpresaAoFuncionario.VincularEmpresa(_funcionarioDto.Id, (int)_funcionarioDto.EmpresaId);
 
@@ -69,8 +68,6 @@ namespace OnboardSIGDB1.DominioTeste.Funcionario
         [Fact]
         public async Task NaoDeveVincularEmpresaNaoExistente()
         {
-            _funcionarioDto.Id = 1;
-            _funcionarioDto.EmpresaId = 2;
             var funcionario = FuncionarioBuilder.Novo().Build();
             _funcionarioRepositorioMock.Setup(r => r.RecuperarPorId(_funcionarioDto.Id)).ReturnsAsync(funcionario);
 
